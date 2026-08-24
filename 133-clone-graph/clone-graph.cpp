@@ -1,31 +1,27 @@
 class Solution {
 public:
     Node* cloneGraph(Node* node) {
-        if (!node) return nullptr;
+        if (!node) return NULL;
 
-        unordered_map<Node*, Node*> visited; // original -> clone
-
-        Node* clone = new Node(node->val);
-        visited[node] = clone;
-
+        unordered_map<Node*, Node*> visited;
         queue<Node*> q;
+
+        visited[node] = new Node(node->val);
         q.push(node);
 
         while (!q.empty()) {
-            Node* curr = q.front();
+            Node* temp = q.front();
             q.pop();
 
-            for (Node* neighbor : curr->neighbors) {
-                if (visited.find(neighbor) == visited.end()) {
-                    // create clone for unseen neighbor
-                    visited[neighbor] = new Node(neighbor->val);
-                    q.push(neighbor);
+            for (Node* nbr : temp->neighbors) {
+                if (visited.find(nbr) == visited.end()) {
+                    visited[nbr] = new Node(nbr->val);
+                    q.push(nbr);
                 }
-                // link current clone to neighbor's clone (existing or just created)
-                visited[curr]->neighbors.push_back(visited[neighbor]);
+                visited[temp]->neighbors.push_back(visited[nbr]);
             }
         }
 
-        return clone;
+        return visited[node];
     }
 };
