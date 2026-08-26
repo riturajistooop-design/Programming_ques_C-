@@ -21,7 +21,7 @@ public:
                 q.pop();
                 int i = temp.first;
                 int j = temp.second;
-                if(dis[i][j] == -1)dis[i][j] = dist;
+                if(dis[i][j] == -1)dis[i][j] = dist;  // this if was important bcz what if the same node came at same level for two different nodes so it get pushed same time i guess something like that
                 if(i!=0 && dis[i-1][j] == -1)q.push({i-1,j});
                 if(i!=m-1 && dis[i+1][j] == -1)q.push({i+1,j});
                 if(j!=0 && dis[i][j-1] == -1) q.push({i,j-1});
