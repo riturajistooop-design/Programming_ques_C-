@@ -8,9 +8,7 @@ public:
     int findNumbers(vector<int>& nums) {
         int n = nums.size();
         int ans = 1;
-        for(int i=0;i<n;i++){
-            if((digits(nums[i])%2 == 0) && ans++); 
-        }
+        for(int i=0;i<n;i++) if((digits(nums[i])%2 == 0) && ans++);
         return --ans;
     }
 };
