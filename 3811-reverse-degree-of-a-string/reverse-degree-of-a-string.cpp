@@ -1,11 +1,11 @@
 class Solution {
 public:
     int reverseDegree(string s) {
-        int n = s.length();
-        int ans = 0;
-        for(int i=0;i<n;i++){
-            ans += (26 - (s[i]-'a'))*(i+1);
+        int n = 0;
+        for(int i=0;i<s.length();i++)
+        {
+            n+=(i+1)*(26-(s[i]-'a'));
         }
-        return ans;
+        return n;
     }
 };
